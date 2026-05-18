@@ -1,0 +1,581 @@
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #eef3f9;
+}
+
+/* --------------------------------------------header-------------------------------------------- */
+
+.header {
+  background-color: #2f6db5;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 25px;
+}
+
+.header-icon {
+  background-image: url("../images/demo-rogo.png");
+  width: 100px;
+  height: 50px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-search input {
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+.header-search button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+
+.header-nav ul {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-nav li {
+  margin-left: 20px;
+}
+
+.header-nav a {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.header-nav a:hover {
+  opacity: 0.8;
+}
+
+/* --------------------------------------main----------------------------------------------------- */
+.main_container {
+    width: 1080px;
+    padding: 10px 100px;
+
+}
+
+.m_container_1 {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.major_stock {
+  width: 45%;
+}
+.major_stock li {
+    margin-bottom: 10px;
+    display: block;
+    padding: 10px 10px;
+    border: 1.5px solid #b0b0b0;  
+    border-radius: 9999px;
+    width: 350px;
+    box-sizing: border-box;
+}
+
+.major_stock_prices {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.major_stock_prices li {
+  background-color: white;
+}
+
+.major_stock_prices a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #333;          
+    font-size: 20px;
+    transition: color 0.1s; 
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.major_stock_prices a:hover {
+    color: #007bff;
+}
+
+
+.major_stock_prices span {
+    font-weight: bold;
+    color: #000;
+    margin-left: 0;  
+}
+
+
+
+.nikkei_chart {
+    width: 55%;
+}
+
+
+.tradingview-widget-container {
+    width: 100%;
+    height: 100%;
+}
+
+.m_container_2 h2{
+  margin-top: 50px;
+}
+
+/* ----------------------------------------------------search--------------------------------------------------- */
+
+/* ===== 検索フォーム全体 ===== */
+.search-form {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0 10px;
+}
+
+/* ラベル */
+.search-form label {
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+}
+
+/* 入力欄 */
+.search-form input[type="text"] {
+    width: 200px;
+    padding: 8px 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* フォーカス時 */
+.search-form input[type="text"]:focus {
+    outline: none;
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.15);
+}
+
+/* 検索ボタン */
+.search-form button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4a90e2;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* ホバー */
+.search-form button:hover {
+    background-color: #357abd;
+}
+
+/* クリック時 */
+.search-form button:active {
+    transform: translateY(1px);
+}
+
+
+
+.stock-info {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.left_block p {
+  margin: 0px;
+}
+
+.company_name {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.now-price {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.price-up {
+  color: #2aa745;
+}
+
+.price-down {
+  color: #e74c3c; 
+}
+
+
+.now-price strong {
+  text-align: center;
+  font-size: 25px;
+}
+
+.stock-price {
+  font-size: 40px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.price-change {
+  width: 150px;
+  padding-left: 150px;
+}
+
+.right_block ul {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding: 0;
+}
+
+.right_block li {
+  margin: 0 20px;
+  font-size: 24px;
+  position: relative;
+}
+
+/* 区切り線（2つ目以降の左側に線を入れる） */
+.right_block li + li::before {
+  content: "";
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 60%;
+  background-color: #ccc;
+}
+
+
+
+/* ===== メインエリア ===== */
+.main-area {
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  margin: 20px 0;
+  gap: 20px;
+}
+
+
+/* ===== チャートエリア ===== */
+.chart-area {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+
+/* Plotlyの生成物対策 */
+.chart-area > div {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* ===== 注文エリア ===== */
+.order-area {
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.order-area h3 {
+  margin-top: 0;
+}
+
+.order-area input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.order-area button {
+  padding: 12px;
+  font-size: 15px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.buy-btn {
+  background-color: #2aa745;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.sell-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ===== 財務情報 + ニュース全体 ===== */
+.stock_data2 {
+  margin-top: 20px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+
+  width: 100%;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+
+/* ===== 財務情報テーブル ===== */
+.stock_details_information {
+  overflow-x: auto;
+}
+
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.stock-table th {
+  background-color: #f3f6fb;
+  text-align: left;
+  padding: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #ddd;
+}
+
+.stock-table td {
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.stock-table tr:hover {
+  background-color: #fafcff;
+}
+
+/* ===== ニュース ===== */
+.stock-news h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.stock-news ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stock-news li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.stock-news li:last-child {
+  border-bottom: none;
+}
+
+.stock-news a {
+  font-size: 16px;
+  font-weight: bold;
+  color: #2f6db5;
+  text-decoration: none;
+}
+
+.stock-news a:hover {
+  text-decoration: underline;
+}
+
+.news-meta {
+  font-size: 13px;
+  color: #777;
+  margin-top: 4px;
+}
+
+
+/* ===== 下部カード ===== */
+.bottom-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+/* ------------------------------------------------------------------------------------------------------------- */
+
+
+/* ----------------------------------------------portfolio------------------------------------------------------ */
+
+.m-portfolio {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.stock-held {
+  width: 100%;
+  border: 1px solid #b0b0b0;
+  border-collapse: collapse; 
+  margin-top: 10px;
+}
+
+.stock-held th,
+.stock-held td {
+    border-bottom: 1px solid #b0b0b0;
+    padding: 8px 12px;
+}
+.stock-held th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: left;
+}
+h3 {
+  margin-top: 20px;
+}
+
+/* -------------------------------------------------------------------------------------------------------------- */
+
+
+/* ---------------------------------------------contact---------------------------------------------------------- */
+
+/* ページタイトル */
+.contact{
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* フォーム全体 */
+.my-5 form{
+    background: #ffffff;
+    padding: 35px 40px;
+    border-radius: 12px; /* 角丸 */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08); /* 今風の影 */
+}
+
+/* 各入力エリア */
+.form-group{
+    margin-bottom: 20px;
+}
+
+/* ラベル */
+.form-group label{
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: #333;
+}
+
+/* 入力欄 */
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px; /* 少し丸く */
+    font-size: 15px;
+    transition: all 0.2s ease;
+    background: #fafafa;
+}
+
+/* フォーカス時 */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    outline: none;
+    border-color: #4f8cff;
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(79,140,255,0.15);
+}
+
+/* textarea高さ */
+.form-group textarea{
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* 送信ボタン */
+#sendMessageButton{
+    display: block;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    background: #4f8cff;
+    color: white;
+    transition: 0.2s;
+}
+
+/* ボタンhover */
+#sendMessageButton:hover{
+    background: #3b73e0;
+}
+
+/* メッセージ */
+ul li.success{
+    color: #2e7d32;
+    background: #e8f5e9;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+ul li.error{
+    color: #c62828;
+    background: #ffebee;
+    padding: 10px;
+    border-radius: 6px;
+}

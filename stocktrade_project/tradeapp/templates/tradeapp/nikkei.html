@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+<title>{% block title %}abc{% endblock %}</title>
+{% block contet %}
+
+<body>
+  <header class="header">
+    <div class="logo">株デモトレード</div>
+    <nav class="nav">
+      <a href="#">ホーム</a>
+      <a href="#">ポートフォリオ</a>
+      <a href="#">ランキング</a>
+      <a href="#">ニュース</a>
+      <a href="#">ログアウト</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="search-box">...</section>
+
+    <section class="stock-info">...</section>
+
+    <section class="main-area">
+      <div class="chart-area">...</div>
+      <div class="order-area">...</div>
+    </section>
+
+    <section class="bottom-area">
+      <div class="card">保有資産</div>
+      <div class="card">マーケットニュース</div>
+    </section>
+  </main>
+</body>
+
+{% endblock %}

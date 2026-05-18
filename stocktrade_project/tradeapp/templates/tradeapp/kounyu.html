@@ -1,0 +1,21 @@
+{% extends "base.html"}
+{% block contet %}
+<!-- 購入ボタン -->
+<button id="buy-button">購入</button>
+
+<!-- 数量入力フォーム（最初は非表示） -->
+<form id="quantity-form" method="POST" action="{% url 'buy' product.id %}" style="display:none;">
+    {% csrf_token %}
+    <label>数量：</label>
+    <input type="number" name="quantity" min="1" value="1">
+    <button type="submit">確定</button>
+</form>
+
+<script>
+// 購入ボタンを押したらフォームを表示
+document.getElementById("buy-button").addEventListener("click", function () {
+    document.getElementById("quantity-form").style.display = "block";
+});
+</script>
+
+{% endblock %}

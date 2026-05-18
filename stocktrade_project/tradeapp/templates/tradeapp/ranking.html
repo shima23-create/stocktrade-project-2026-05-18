@@ -1,0 +1,34 @@
+<h1>主要50銘柄 騰落率ランキング ({{ date }})</h1>
+
+<h2>📈 上昇率 TOP5</h2>
+<table border="1">
+<tr>
+<th>コード</th><th>企業名</th><th>株価</th><th>上昇率%</th>
+</tr>
+
+{% for s in top5_up %}
+<tr>
+<td>{{ s.code }}</td>
+<td>{{ s.name }}</td>
+<td>{{ s.price }}</td>
+<td style="color:red;">+{{ s.rate }}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+<h2>📉 下落率 TOP5</h2>
+<table border="1">
+<tr>
+<th>コード</th><th>企業名</th><th>株価</th><th>下落率%</th>
+</tr>
+
+{% for s in top5_down %}
+<tr>
+<td>{{ s.code }}</td>
+<td>{{ s.name }}</td>
+<td>{{ s.price }}</td>
+<td style="color:blue;">{{ s.rate }}</td>
+</tr>
+{% endfor %}
+</table>

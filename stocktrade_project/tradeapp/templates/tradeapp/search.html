@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block title %}検索{% endblock %}
+
+{% block content %}
+
+{# メッセージ表示 #}
+{% if messages %}
+<ul class="list-unstyled" style="list-style: none;">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+<div class="stock_data">
+    <h1>株価・財務情報検索</h1>
+
+    <form method="get" class="search-form">
+        <label for="ticker">株式シンボル:</label>
+        <input type="text" id="ticker" name="ticker" value="{{ stock_data.ticker }}">
+        <button type="submit">検索</button>
+    </form>
+    {% if stock_data %}
+
+    <div class="stock-info">
+        <div class="left_block">
+            <p class="company_name">{{ stock_data.company_name }}</p>
+
+            <div class="now-price">
+                <strong>株価</strong>
+                <p class="stock-price
+                    {% if stock_data.diff_percent > 0 %} price-up
+                    {% elif stock_data.diff_percent < 0 %} price-down
+                    {% endif %}
+                ">
+                    {{ stock_data.stock_price }}
+                </p>
+            </div>
+
+            <p class="price-change">前日比(%): {{ stock_data.diff_percent }}%</p>
+        </div>
+
+        <div class="right_block">
+            <ul>
+                <li>始値: {{ stock_data.open_price }}</li>
+                <li>高値: {{ stock_data.high_price }}</li>
+                <li>安値: {{ stock_data.low_price }}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-area">
+        <div class="chart-area">
+            {% if stock_data.chart_img %}
+                {{ stock_data.chart_img|safe }}
+                <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+            {% endif %}
+        </div>
+
+        <div class="order-area">
+            <h3>注文</h3>
+
+            <button id="buy-button" class="buy-btn">購入</button>
+
+            <form id="quantity-form" method="POST"
+                  action="{% url 'tradeapp:buy_stock' %}" style="display:none;">
+                {% csrf_token %}
+                <input type="hidden" name="ticker" value="{{ stock_data.ticker }}">
+                <input type="number" name="quantity" min="1" value="1">
+                <button type="submit">確定</button>
+            </form>
+
+            <button id="sell-button" class="sell-btn">売却</button>
+
+            <form id="sell-form" method="POST"
+                  action="{% url 'tradeapp:sell_stock' %}" style="display:none;">
+                {% csrf_token %}
+                <input type="hidden" name="ticker" value="{{ stock_data.ticker }}">
+                <input type="number" name="quantity" min="1" value="1">
+                <button type="submit">確定</button>
+            </form>
+        </div>
+
+        <div class="stock-data2">
+            <table class="stock-table">
+                <tr><th>項目</th><th>値</th></tr>
+                <tr><td>営業利益</td><td>{{ stock_data.operating_income }}</td></tr>
+                <tr><td>営業費用</td><td>{{ stock_data.operating_expense }}</td></tr>
+                <tr><td>販売費及び一般管理費</td><td>{{ stock_data.sg_and_a }}</td></tr>
+                <tr><td>売上総利益</td><td>{{ stock_data.gross_profit }}</td></tr>
+                <tr><td>売上原価</td><td>{{ stock_data.cost_of_revenue }}</td></tr>
+                <tr><td>売上高</td><td>{{ stock_data.total_revenue }}</td></tr>
+                <tr><td>営業収益</td><td>{{ stock_data.operating_revenue }}</td></tr>
+                <tr><td>純利益</td><td>{{ stock_data.net_income }}</td></tr>
+            </table>
+        </div>
+    </div>
+
+    {% endif %}
+</div>
+
+<script>
+document.getElementById("buy-button")?.addEventListener("click", () => {
+    document.getElementById("quantity-form").style.display = "block";
+    document.getElementById("sell-form").style.display = "none";
+});
+
+document.getElementById("sell-button")?.addEventListener("click", () => {
+    document.getElementById("sell-form").style.display = "block";
+    document.getElementById("quantity-form").style.display = "none";
+});
+</script>
+
+{% endblock %}

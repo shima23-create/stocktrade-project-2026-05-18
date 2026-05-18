@@ -1,0 +1,7 @@
+<h3>株を売却</h3>
+<form method="POST" action="{% url 'tradeapp:sell_stock' %}">
+    {% csrf_token %}
+    <input type="text" name="ticker" placeholder="銘柄コード" required>
+    <input type="number" name="quantity" placeholder="数量" min="1" required>
+    <button type="submit">売却</button>
+</form>

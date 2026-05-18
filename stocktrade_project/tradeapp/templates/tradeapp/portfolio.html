@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load humanize %}
+{% block content %}
+
+{% if messages %}
+    <ul class="list-unstyled" style="list-style: none;">
+
+        {% for message in messages %}
+
+        <li {%if message.tags %} class="{{ message.tags }}" {% endif %}>
+            {{ message }}
+        </li>
+        {% endfor %}
+
+    </ul>
+{% endif %}
+<div class="m-portfolio">
+    <h2>保有銘柄</h2>
+    
+    <table class="stocks-held">
+        <tr>
+            <th>銘柄</th>
+            <th>購入価格</th>
+            <th>数量</th>
+            <th>現在株価</th>
+            <th>評価額</th>
+            <th>評価損益</th>
+        </tr>
+
+        {% for p in portfolio %}
+        <tr>
+            <td>{{ p.company }}</td>
+            <td>{{ p.purchase_price }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>{{ p.current_price }}</td>
+            <td>{{ p.total_value }}</td>
+            <td
+            {% if p.profit >= 0 %}
+                style="color: green;"
+            {% else %}
+                style="color: red;"
+            {% endif %}
+            >
+                {{ p.profit }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    <h3>残高：{{ balance|floatformat:0|intcomma }} 円</h3>
+
+
+    <form method="POST" action="{% url 'tradeapp:add_balance' %}">
+        {% csrf_token %}
+        <input type="number" name="amount" placeholder="追加する金額" min="1" max="10000000"required>
+        <button type="submit">残高を追加</button>
+        <p>※上限1000万</p>
+    </form>
+</div>
+{% endblock %}

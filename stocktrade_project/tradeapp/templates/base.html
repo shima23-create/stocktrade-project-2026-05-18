@@ -1,0 +1,61 @@
+{% load static %}
+<!doctype html>
+<html lang="ja" data-bs-theme="auto">
+  <head>
+
+    <meta charset="utf-8">
+
+    <title>{% block title %}{% endblock %}</title>
+
+
+        <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+
+
+
+  </head>
+  <body>
+    <header class="header">
+      <a href="/" class="logo-link">
+        <div class="header-icon"></div>
+      </a>
+
+      <nav class="header-nav">
+        <ul>
+          <li><form
+              class="header-search"
+              method="get"
+              action="{% url 'tradeapp:search_view' %}"
+            >
+              <input
+                type="text"
+                name="ticker"
+                placeholder="銘柄コード"
+                required
+              >
+              <button type="submit">検索</button>
+              </form></li>
+          <li><a href="{% url 'tradeapp:search_view' %}">株価検索</a></li>
+          <li><a href="{% url 'tradeapp:portfolio' %}">ポートフォリオ</a></li>
+          <li><a href="{% url 'tradeapp:holdings_ratio' %}">保有率</a></li>
+
+          {% if request.user.is_authenticated %}
+            <li><a href="{% url 'accounts:logout' %}">ログアウト</a></li>
+          {% else %}
+            <li><a href="{% url 'accounts:login' %}">ログイン</a></li>
+            <li><a href="{% url 'accounts:signup' %}">サインアップ</a></li>
+          {% endif %}
+
+          <li><a href="{% url 'tradeapp:contact' %}">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main_container">
+    {% block content %}
+    {% endblock %}
+    </main>
+      <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
+

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>資産保有率</h1>
+
+<div id="pie-chart" style="width:600px; height:600px;"></div>
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script>
+    var labels = {{ labels|safe }};
+    var values = {{ values|safe }};
+
+    var colors = [];
+    for (var i = 0; i < labels.length; i++) {
+        if (labels[i] === "残高") {
+            colors.push('rgba(54, 162, 235, 0.8)');
+        } else {
+            colors.push(undefined);
+        }
+    }
+
+    var data = [{
+        values: values,
+        labels: labels,
+        type: 'pie',
+        textinfo: "label+percent",
+        insidetextorientation: "radial",
+        marker: { colors: colors },
+        sort: false
+    }];
+
+    var layout = {
+        height: 600,
+        width: 600,
+        title: "保有資産の割合（円グラフ）",
+        paper_bgcolor: "#eef3f9"
+    };
+
+    Plotly.newPlot('pie-chart', data, layout);
+</script>
+
+{% endblock %}
