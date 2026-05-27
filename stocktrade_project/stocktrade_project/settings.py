@@ -164,7 +164,7 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'utm2577223@stu.o-hara.ac.jp'
  
 # Outlookのメールアドレスのパスワード
-EMAIL_HOST_PASSWORD = 'Shinamon6023'
+EMAIL_HOST_PASSWORD =
  
 #SMTPサーバーと通信する際にTLS(セキュア)接続を行う
 EMAIL_USE_TLS = True
